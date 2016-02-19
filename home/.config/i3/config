@@ -148,7 +148,7 @@ bindsym $mod+Ctrl+Shift+l exec "xautolock -locknow"
 # screenshot
 bindsym Print exec "scrot -e 'mv $f ~/screenshots'"
 
-gaps inner 8
+gaps inner 2
 gaps outer 0
 smart_borders no_gaps # no border only if gaps at edge of screen is 0
 new_window 1pixel # set borders to 1px if in split container (disable title bar)
