@@ -131,8 +131,14 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Exec it on start
-exec konsole
+# Colors
+# class                 border  backgr. text    indicator child_border
+client.focused          #333333 #666666 #ffffff #707070   #707070
+client.focused_inactive #333333 #5f676a #ffffff #707070   #707070
+client.unfocused        #333333 #222222 #888888 #707070   #707070
+client.urgent           #2f343a #900000 #ffffff #707070   #707070
+client.placeholder      #000000 #0c0c0c #ffffff #707070   #707070
+client.background       #ffffff
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -147,6 +153,7 @@ bar {
                 statusline #666666
                 separator #000000
 
+                # class            border  bg      text
                 focused_workspace  #000000 #000000 #DDDDDD
                 active_workspace   #000000 #000000 #336699
                 inactive_workspace #000000 #000000 #777777
@@ -162,6 +169,9 @@ bindsym Print exec "scrot -e 'mv $f ~/screenshots'"
 
 # set borders to 1px if in split container (disable title bar)
 new_window pixel 1px
+
+# no border on screen edges
+hide_edge_borders both
 
 # gaps inner 2
 # gaps outer 0
