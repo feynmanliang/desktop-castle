@@ -12,7 +12,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:xos4 Terminus 9
+font pango:xos4 Terminus, Icons 14
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -132,13 +132,36 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Colors
-# from: https://gist.github.com/paulbdavis/4956329
-# class                 border  backgr. text    indicator child_border
-client.focused          #dcdccc #dcdccc #3c3b37 #ffcfaf
-client.focused_inactive #3c3b37 #3c3b37 #7f9f7f #3c3b37
-client.unfocused        #3c3b37 #3c3b37 #dcdccc #3c3b37
-client.urgent           #dca3a3 #dca3a3 #dcdccc #3c3b37
-client.background       #ffffff
+# The ~/.Xresources should contain a line such as
+#     *color0: #121212
+# and must be loaded properly, e.g., by using
+#     xrdb ~/.Xresources
+# This value is picked up on by other applications (e.g., the URxvt terminal
+# emulator) and can be used in i3 like this:
+set_from_resource $darkred     i3wm.color1     #000000
+set_from_resource $red         i3wm.color9     #000000
+set_from_resource $darkgreen   i3wm.color2     #000000
+set_from_resource $green       i3wm.color10    #000000
+set_from_resource $darkyellow  i3wm.color3     #000000
+set_from_resource $yellow      i3wm.color11    #000000
+set_from_resource $darkblue    i3wm.color4     #000000
+set_from_resource $blue        i3wm.color12    #000000
+set_from_resource $darkmagenta i3wm.color5     #000000
+set_from_resource $magenta     i3wm.color13    #000000
+set_from_resource $darkcyan    i3wm.color6     #000000
+set_from_resource $cyan        i3wm.color14    #000000
+set_from_resource $white       i3wm.color15    #000000
+set_from_resource $darkwhite   i3wm.color7     #000000
+set_from_resource $black       i3wm.color0     #000000
+set_from_resource $darkblack   i3wm.background #000000
+set $transparent #00000000
+
+#                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
+client.focused          $white      $white      $darkblack  $darkblack  $darkblack
+client.focused_inactive $darkblack  $darkwhite  $black      $darkblack  $darkblack
+client.unfocused        $darkblack  $darkblack  $white      $darkblack  $darkblack
+client.urgent           $darkred    $darkred    $black      $darkred    $darkred
+client.background       $black
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -147,7 +170,6 @@ bar {
         status_command    i3status
         tray_output primary
         status_command i3status -c ~/.config/i3/i3status.conf
-        font pango:xos4 Terminus, Icons 10
         colors {
 
                 background #3c3b37
