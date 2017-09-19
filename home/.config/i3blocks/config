@@ -1,0 +1,45 @@
+separator=false
+separator_block_width=5
+border_top=0
+border_left=0
+border_right=0
+border_bottom=4
+
+[updates]
+command=$HOME/bin/updates.sh
+interval=60
+signal=3
+urgent=true
+
+[volume]
+label=  
+command=[[ -z "${BLOCK_BUTTON}" ]] || ( [[ "${BLOCK_BUTTON}" == "1" ]] && ((/usr/bin/pavucontrol -t 3 --name "pavucontrol-bar" || true) && $HOME/bin/volume_control.py signal) || $HOME/bin/volume_control.py toggle ); $HOME/bin/volume_control.py i3blocks
+interval=5
+signal=1
+markup=pango
+border=#cc241d
+
+[temperature]
+label= 
+command=echo "$($HOME/bin/temperature.sh 'Core 0')"
+interval=5
+border=#b16286
+
+[wireless]
+label=  
+command=[[ -z "$(iwgetid -r)" ]] || echo "$(iwgetid -r) "
+interval=2
+border=#98971a
+
+[battery]
+command=$HOME/bin/battery.sh
+interval=persist
+border=#458588
+
+[time]
+label=  
+command=echo "`date +'%a %d %b'` <b>`date +'%T'`</b> "; [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
+interval=1
+markup=pango
+border=#928374
+separator_block_width=0
