@@ -56,7 +56,7 @@ floating_maximum_size -1 x -1
 font pango:Hack, FontAwesome 8
 
 #                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
-client.focused          $black      $black      $white  $darkblack  $darkblack
+client.focused          $black      $black      $white      $darkblack  $yellow
 client.unfocused        $black      $black      $darkwhite      $darkblack  $darkblack
 client.focused_inactive $black      $black      $darkwhite      $darkblack  $darkblack
 client.urgent           $darkred    $darkred    $black      $darkred    $darkred
@@ -248,7 +248,10 @@ mode "$mode_brightness" {
 
 # fix graphics glitch
 new_window none
-for_window [class=(?i)konsole] border pixel 3
+
+# force borders
+#for_window [class=(?i)konsole] border pixel 3
+for_window [class=".*"] border pixel 2
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
